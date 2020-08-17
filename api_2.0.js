@@ -38,6 +38,9 @@ app.get('/races',function(req,res){
 app.get('/seasons',function(req,res){
   res.sendFile(path.join(__dirname+'/frontend/seasons.html'));
 });
+app.get('/tracks',function(req,res){
+  res.sendFile(path.join(__dirname+'/frontend/tracks.html'));
+});
 app.get('/raceresults',function(req,res){
   res.sendFile(path.join(__dirname+'/frontend/raceresults.html'));
 });
