@@ -10,7 +10,6 @@ const app = express();
 const path = require('path');
 const mysql = require( 'mysql' );
 const pool = mysql.createConnection(process.env.JAWSDB_MARIA_URL);
-const router = express.Router();
 const apiSQL = require('./api_sql.js');
 
 // **********************************************************
@@ -24,25 +23,22 @@ app.set( 'port', process.env.PORT || 5000 );
 // SET ROUTES
 // **********************************************************
 app.use(express.static('frontend'));
-router.get('/',function(req,res){
+app.get('/',function(req,res){
   res.sendFile(path.join(__dirname+'/frontend/index.html'));
 });
-router.get('/drivers',function(req,res){
+app.get('/drivers',function(req,res){
   res.sendFile(path.join(__dirname+'/frontend/drivers.html'));
 });
-router.get('/licenses',function(req,res){
+app.get('/licenses',function(req,res){
   res.sendFile(path.join(__dirname+'/frontend/licenses.html'));
 });
-router.get('/races',function(req,res){
+app.get('/races',function(req,res){
   res.sendFile(path.join(__dirname+'/frontend/races.html'));
 });
-router.get('/seasons',function(req,res){
+app.get('/seasons',function(req,res){
   res.sendFile(path.join(__dirname+'/frontend/seasons.html'));
 });
-router.get('/tracks',function(req,res){
-  res.sendFile(path.join(__dirname+'/frontend/tracks.html'));
-});
-router.get('/raceresults',function(req,res){
+app.get('/raceresults',function(req,res){
   res.sendFile(path.join(__dirname+'/frontend/raceresults.html'));
 });
 app.post( '/api', handlerAPI );
