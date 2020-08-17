@@ -9,7 +9,7 @@ const express = require( 'express' );
 const app = express();
 const path = require('path');
 const mysql = require( 'mysql' );
-const pool = mysql.createConnection(process.env.JAWSDB_URL);
+const pool = mysql.createConnection(process.env.JAWSDB_MARIA_URL);
 const router = express.Router();
 const apiSQL = require('./api_sql.js');
 
