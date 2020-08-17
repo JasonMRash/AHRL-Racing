@@ -54,7 +54,6 @@ app.use(handler500);
 // **********************************************************
 app.listen(app.get('port'), function() {
 	console.log('API SERVER STARTED');
-	console.log(`Host: ${process.env.HOSTNAME}`);
 	console.log(`Port: ${app.get('port')}`);
 	console.log(`Press Ctrl-C to terminate.`);
 });
