@@ -2,7 +2,7 @@
 // Jason Rash & Grigori Barbachov
 // Drivers Page Javascript
 
-baseURL ='https://ahrl-backend.herokuapp.com';
+baseURL ='https://ahrl-racing.herokuapp.com';
 
 document.addEventListener("DOMContentLoaded", start);
 

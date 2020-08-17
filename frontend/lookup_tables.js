@@ -3,7 +3,7 @@
 // Group Project - JS Code for screens Licenses, Seasons, Tracks
 
 // Declare constants
-const apiURL = 'https://ahrl-backend.herokuapp.com/api';
+const apiURL = 'https://ahrl-racing.herokuapp.com/api';
 
 // Declare global variables for DOM reference
 let itemsList, itemID, itemName, itemDescriptionl;
