@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AHRL Amateur Hour Racing League</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="main.css" media="screen">
+  <!-- SCRIPTS -->
+  <script>
+    const table = 'Licenses';
+    const idFieldName = 'licenseID';
+  </script>
+  <script src="lookup_tables.js"></script>
+</head>
+
+<body>
+  <div id="full-page">
+    <div id="content-wrap">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-main">
+        <a class="navbar-brand" href="/">AHRL</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/drivers">Drivers</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/licenses">Licenses <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/tracks">Tracks</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/races">Races</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/seasons">Seasons</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/raceresults">Race Results</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class ="container">
+        <h1 class="text-center">AHRL Licenses</h1>
+        <div class ="row">
+
+          <!-- RIGHT SIDE OF SCREEN -->
+          <div class ="col-sm custom-column" id="left-column">
+              <h1 class="text-center heading-wrapper">List of Licenses</h1>
+            <div class="info-box bg-dark">
+
+              <!-- LIST OF ITEMS -->
+              <div class="table-size overflow-auto">
+                <table class="table table-sm table-dark table-hover table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="col">License Name</th>
+                    </tr>
+                  </thead>
+                  <!-- ID: itemsList -->
+                  <tbody id="itemsList" class="table-striped">
+                  </tbody>
+                </table>
+              </div>
+              <!-- BUTTON 'ADD' -->
+              <div class="text-center">
+                <button type="button" data-toggle="modal" data-target="#addItemModal" class="btn btn-silver">Add License</button>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- RIGHT SIDE OF SCREEN -->
+          <div class ="col-sm custom-column" id="right-column">
+            <h1 class="text-center heading-wrapper">License Info</h1>
+            <div class="info-box bg-dark">
+                <table class="table table-dark">
+                  <tr style="display: none;">
+                    <!-- ID: itemID -->
+                    <td>ID:</td>
+                    <td id="itemID"></td>
+                  </tr>
+                  <tr>
+                    <!-- ID: itemName -->
+                    <td>Name:</td>
+                    <td id="itemName"></td>
+                  </tr>
+                  <tr>
+                    <!-- ID: itemDescription -->
+                    <td>Description:</td>
+                    <td id="itemDescription"></td>
+                  </tr>
+                </table>
+                <div class="text-center">
+                  <!-- BUTTON 'UPDATE' -->
+                  <button type="button" data-toggle="modal" data-target="#updateItemModal" class="btn btn-silver">Update License</button>
+                  <!-- BUTTON 'DELETE' -->
+                  <!-- ID: deleteItem -->
+                  <button type="button" id="deleteItem" class="btn btn-danger">Delete License</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ADD ITEM MODAL (Modified from Bootstap Documentation Example) -->
+        <!-- ID: addItemModal -->
+        <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="newLicenseModal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-center" id="addItemModal">Add License</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div>
+                  <form href="" method="POST">
+                    <div class="form-group row">
+                      <!-- ID: addItemName -->
+                      <label for="addItemName" class="col-sm-2 col-form-label">Name</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="addItemName" placeholder="License Name">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                        <!-- ID: addItemDescription -->
+                      <label for="addItemDescription" class="col-sm-2 col-form-label">Description</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="addItemDescription" placeholder="License Description">
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <!-- ID: addItem -->
+                      <button id="addItem" type="button" class="btn btn-dark">Add License</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                  </form>
+                </div>
+              </div>  
+            </div> 
+          </div>
+        </div>
+
+        <!-- UPDATE ITEM MODAL (Modified from Bootstap Documentation Example) -->
+        <!-- ID: updateItemModal -->
+        <div class="modal fade" id="updateItemModal" tabindex="-1" role="dialog" aria-labelledby="updateItemModal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-center" id="updateItemModal">Update License</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div>
+                  <form href="" method="POST">
+                    <div class="form-group row">
+                      <!-- ID: updateItemName -->
+                      <label for="updateItemName" class="col-sm-2 col-form-label">Name</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="updateItemName">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <!-- ID: updateItemDescription -->
+                      <label for="updateItemDescription" class="col-sm-2 col-form-label">Description</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="updateItemDescription">
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <!-- ID: updateItem -->
+                      <button id="updateItem" type="button" class="btn btn-dark">Update License</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                  </form>
+                </div>
+              </div>  
+            </div> 
+          </div>
+        </div>
+
+    </div>
+    <footer id="footer">
+      <div class="container footer-text">
+        <p>Created by Jason Rash & Grigori Barbachov</p>
+      </div>
+    </footer>
+  </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

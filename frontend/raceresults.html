@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AHRL Amateur Hour Racing League</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="main.css" media="screen">
+  <script src="raceResults.js"></script>
+</head>
+<body>
+  <div id="full-page">
+    <div id="content-wrap">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-main">
+        <a class="navbar-brand" href="/">AHRL</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/drivers">Drivers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/licenses">Licenses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/tracks">Tracks</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/races">Races</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/seasons">Seasons</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/raceresults">Race Results <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class ="container">
+        <div class ="row">
+          <div class ="col-sm custom-section" id="one-column">
+            <h1 class="text-center heading-wrapper">List of Race Results</h1>
+            <div class="container">
+              <div class="row">
+                <div class ="col-sm bg-dark filter-box">
+                  <form href="" method="POST">
+                    <div class="form-group row">
+                      <label for="filterDriver" class="col-sm-2 col-form-label footer-text">Driver Name</label>
+                      <div class="col-sm-10">
+                        <select class="form-control" id="filterDriver">
+                        </select>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <input class="form-check-input" id="filterDriverCheckbox" type="checkbox">
+                      <label class="form-check-label" for = "filterDriverCheckbox">Filter Results By Driver</label>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-sm bg-dark filter-box">
+                  <form href="" method="POST">
+                    <div class="form-group row">
+                      <label for="filterRace" class="col-sm-2 col-form-label">Race Name</label>
+                      <div class="col-sm-10">
+                        <select class="form-control" id=filterRace>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <input class="form-check-input" id="filterRaceCheckbox" type="checkbox">
+                      <label class="form-check-label" for = "filterRaceCheckbox">Filter Results By Race</label>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="info-box bg-dark table-responsive-sm">
+              <table class="table table-sm table-dark table-hover table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th style="display: none;">RaceID</th>
+                    <th>Race Name</th>
+                    <th style="display: none;">DriverID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Finish Time</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody id="raceResultsTable" class="table-striped">
+                  <!-- For each row in database loop through and populate table using javascript-->
+                  <!-- End for each loop -->
+                </tbody>
+              </table>
+              <div class="text-center">
+                <button type="button" data-toggle="modal" data-target="#addRaceResultModal" class="btn btn-silver">Add Race Result</button>
+              </div>
+            </div>
+            <!-- Add RaceResult Modal (Modified from Bootstap Documentation Example) -->
+            <div class="modal fade" id="addRaceResultModal" tabindex="-1" role="dialog" aria-labelledby="addRaceResultModal" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title text-center" id="addRaceResultModalTitle">Add Race Result</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div>
+                      <form href="" method="POST">
+                        <div class="form-group row">
+                          <label for="resultDriverName" class="col-sm-2 col-form-label">Driver Name</label>
+                          <div class="col-sm-10">
+                            <select class="form-control" id="insertDriver">
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="resultRaceName" class="col-sm-2 col-form-label">Race Name</label>
+                          <div class="col-sm-10">
+                            <select class="form-control" id="insertRace">
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="insertFinishTime" class="col-sm-2 col-form-label">Finish Time</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="insertFinishTime" placeholder="00:00:00.00">
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button id="addRaceResult" type="button" class="btn btn-dark">Add Race Result</button>
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>  
+                </div> 
+              </div>
+            </div>
+            <!-- Update RaceResult Modal (Modified from Bootstap Documentation Example) -->
+            <div class="modal fade" id="updateRaceResultModal" tabindex="-1" role="dialog" aria-labelledby="updateRaceResultModal" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title text-center" id="updateRaceResultModalTitle">Update Race Result</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div>
+                      <form href="" method="POST">
+                        
+                        <div class="form-group row">
+                          <label for="resultRaceName" class="col-sm-2 col-form-label">Race Name</label>
+                          <div class="col-sm-10">
+                            <span class="form-control" id="updateRace">
+                            </span>
+                            <span style="display: none;" id="updateRaceID"></span>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="resultDriverName" class="col-sm-2 col-form-label">Driver Name</label>
+                          <div class="col-sm-10">
+                            <span class ="form-control" id="updateDriver">
+                            </span>
+                            <span style="display: none;" id="updateDriverID"></span>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="raceFinishTime" class="col-sm-2 col-form-label">Finish Time</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="updateFinishTime">
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button id="updateRaceResult" type="button" class="btn btn-dark">Update Race Result</button>
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>  
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+      <div class="container footer-text">
+        <p>Created by Jason Rash & Grigori Barbachov</p>
+      </div>
+    </footer>
+  </div>
+  
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
